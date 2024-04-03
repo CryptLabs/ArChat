@@ -180,4 +180,12 @@ if __name__ == "__main__":
         embedding=embeddings,
         persist_directory=config["data_dir"],
     )
+    # save to disk
     vectordb.persist()
+
+retriever = vectordb.as_retriever()
+
+docs = retriever.get_relevant_documents("how to setup LUKS2?")
+
+print(docs)
+
