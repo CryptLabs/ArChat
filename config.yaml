@@ -1,0 +1,29 @@
+---
+data_dir: ./data
+# Huggingface
+embeddings_model: sentence-transformers/all-mpnet-base-v2
+introduction: Hello! I'm ArchI, how may I assist you today?
+# Sources
+mediawikis:
+  #  - dnd4e
+  # - dnd5e
+  # - darksun
+  # - dragonlance
+  # - eberron
+  # - exandria
+  # - forgottenrealms
+  # - greyhawk
+  # - planescape
+  # - ravenloft
+   - archwiki
+# Ollama
+model: neural-chat
+question: Can you assist me?
+settings:
+  num_sources: 10
+  repeat_penalty: 1.8
+  temperature: 0
+  top_k: 20
+  top_p: 0.35
+# Sources Path
+source: /home/al1nux/Projects/ArchI/data/wiki-archlinux
