@@ -32,7 +32,8 @@ print(colored(f.renderText('ArchI'), 'green'))
 # Adding a subtitle
 #f = Figlet(font='standard')
 print(" Version 0.1\n")
-print(colored('Your Terminal Friendly Arch Linux AI Assistant!'))
+print(colored('Your Terminal Friendly Arch Linux AI Assistant!\n'))
+print("Loading ...\n")
 
 
 
@@ -83,7 +84,7 @@ config = load_config()
 embeddings = HuggingFaceEmbeddings(
         cache_folder="./model",
         model_name=config["embeddings_model"],
-        show_progress=True,
+        show_progress=False,
 )
 # load from disk
 vectordb = Chroma(persist_directory=config["data_dir"],
@@ -94,11 +95,11 @@ vectordb = Chroma(persist_directory=config["data_dir"],
 
 
 # Load an LLM
-#llm = ChatOpenAI(temperature=0, openai_api_key="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")
-llm = GPT4All(
-     model=r"/home/al1nux/Projects/models/orca-mini-3b-gguf2-q4_0.gguf",
-     max_tokens=2048,
-)
+llm = ChatOpenAI(temperature=0.5, openai_api_key="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")
+# llm = GPT4All(
+#      model=r"/home/al1nux/Projects/models/orca-mini-3b-gguf2-q4_0.gguf",
+#      max_tokens=2048,
+# )
 
 # Create the chain
 chain = load_qa_chain(llm, chain_type="stuff")
@@ -117,7 +118,7 @@ while True:
     res = chain.invoke({"input_documents": docs, "question": query})
     print(res["output_text"],end='\n\n')
 
-
+print("\nEnjoy your day!")
 
 
 
