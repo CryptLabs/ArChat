@@ -79,17 +79,22 @@ embeddings = HuggingFaceEmbeddings(
 vectordb = Chroma(persist_directory=config["data_dir"],
                   embedding_function=embeddings)
 
-
 # query it
-query = "how to create Arch Linux install medium usb?"
+query = "where is the consolefonts foler located in Arch Linux?"
 docs = vectordb.similarity_search(query)
 
-# Load LLM and chat
-chat = ChatOpenAI(temperature=0, openai_api_key="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")
+# Load an LLM
+#llm = ChatOpenAI(temperature=0, openai_api_key="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")
+llm = GPT4All(
+     model=r"/home/al1nux/Projects/models/orca-mini-3b-gguf2-q4_0.gguf",
+     max_tokens=2048,
+)
 
-chain = load_qa_chain(chat, chain_type="stuff")
-
+# Create the chain
+chain = load_qa_chain(llm, chain_type="stuff")
 res = chain({"input_documents": docs, "question": query})
+
+# Print the result
 print(res["output_text"])
 
 
