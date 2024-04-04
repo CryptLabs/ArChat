@@ -22,7 +22,16 @@ from langchain_core.prompts.chat import (
     SystemMessagePromptTemplate,
 )
 
-########################################
+from pyfiglet import Figlet
+from termcolor import colored
+
+f = Figlet(font='slant')
+
+print(colored(f.renderText('ArchI'), 'green'))
+
+# Adding a subtitle
+#f = Figlet(font='standard')
+print(colored('Your Terminal Friendly Arch Linux AI Assistant!'))
 
 
 
@@ -66,7 +75,7 @@ def load_config():
 
 config = load_config()
 
-print(config['Arch_Linux_Data_Sources'])
+#print(config['Arch_Linux_Data_Sources'])
 
 ## Use chromadb to get the data 
 
@@ -92,7 +101,7 @@ llm = GPT4All(
 
 # Create the chain
 chain = load_qa_chain(llm, chain_type="stuff")
-res = chain({"input_documents": docs, "question": query})
+res = chain.invoke({"input_documents": docs, "question": query})
 
 # Print the result
 print(res["output_text"])

@@ -8,7 +8,7 @@
   <h3 align="center">ArchI</h3>
 
   <p align="center">
-    Arch + AI = ArchI<br/><br/> Your Friendly Arch Linux AI Assistant Bot!<br/>
+    Arch + AI = ArchI<br/><br/> Your Terminal Friendly Arch Linux AI Assistant!<br/>
     <br/>
     <br/>
     <a href="https://github.com/CryptLabs/Archi"><strong>Explore the docs »</strong></a>
