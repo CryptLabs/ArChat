@@ -31,6 +31,7 @@ print(colored(f.renderText('ArchI'), 'green'))
 
 # Adding a subtitle
 #f = Figlet(font='standard')
+print(" Version 0.1\n")
 print(colored('Your Terminal Friendly Arch Linux AI Assistant!'))
 
 
@@ -89,8 +90,8 @@ vectordb = Chroma(persist_directory=config["data_dir"],
                   embedding_function=embeddings)
 
 # query it
-query = "where is the consolefonts foler located in Arch Linux?"
-docs = vectordb.similarity_search(query)
+#query = "where is the consolefonts foler located in Arch Linux?"
+
 
 # Load an LLM
 #llm = ChatOpenAI(temperature=0, openai_api_key="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")
@@ -101,13 +102,20 @@ llm = GPT4All(
 
 # Create the chain
 chain = load_qa_chain(llm, chain_type="stuff")
-res = chain.invoke({"input_documents": docs, "question": query})
+#res = chain.invoke({"input_documents": docs, "question": query})
 
 # Print the result
-print(res["output_text"])
+#print(res["output_text"])
 
-
-
+while True:
+    user_input = input("Enter your prompt (or 'quit' to exit):\n")
+    if user_input.lower() == 'quit':
+        break
+    query = user_input
+    docs = vectordb.similarity_search(query)
+    print("Searching knowledge base ...",end='\n\n')
+    res = chain.invoke({"input_documents": docs, "question": query})
+    print(res["output_text"],end='\n\n')
 
 
 
