@@ -4,17 +4,7 @@ data_dir: ./data
 embeddings_model: sentence-transformers/all-mpnet-base-v2
 introduction: Hello! I'm ArchI, how may I assist you today?
 # Sources
-mediawikis:
-  #  - dnd4e
-  # - dnd5e
-  # - darksun
-  # - dragonlance
-  # - eberron
-  # - exandria
-  # - forgottenrealms
-  # - greyhawk
-  # - planescape
-  # - ravenloft
+Arch_Linux_Data_Sources:
    - archwiki
 # Ollama
 model: neural-chat
