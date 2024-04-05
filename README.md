@@ -11,10 +11,9 @@
     Arch + AI = ArchI<br/><br/> Your Terminal Friendly Arch Linux AI Assistant!<br/>
     <br/>
     <br/>
-    <a href="https://github.com/CryptLabs/Archi"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
-    <a href="https://github.com/CryptLabs/Archi">View Demo</a>
+  
     .
     <a href="https://github.com/CryptLabs/Archi/issues">Report Bug</a>
     .
@@ -22,7 +21,7 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/CryptLabs/Archi/total) ![Contributors](https://img.shields.io/github/contributors/CryptLabs/Archi?color=dark-green) ![Issues](https://img.shields.io/github/issues/CryptLabs/Archi) ![License](https://img.shields.io/github/license/CryptLabs/Archi) 
+ ![Contributors](https://img.shields.io/github/contributors/CryptLabs/Archi?color=dark-green) ![Issues](https://img.shields.io/github/issues/CryptLabs/Archi) ![License](https://img.shields.io/github/license/CryptLabs/Archi) 
 
 ## Table Of Contents
 
@@ -36,7 +35,6 @@
 * [Contributing](#contributing)
 * [License](#license)
 * [Authors](#authors)
-* [Acknowledgements](#acknowledgements)
 
 ## About The Project
 Arch Linux can be challenging for new users due to its minimalistic and do-it-yourself approach. The installation process requires manual configuration and a good understanding of Linux systems. Additionally, troubleshooting and finding relevant information from the official ArchWiki documentation can be time-consuming for both new users and experienced administrators.
