@@ -53,9 +53,9 @@ More features will be added in future updates to further enhance the user experi
 
 ## Built With
 
-*Python
-*Langchain
-*Chroma
+* Python
+* Langchain
+* Chroma
 
 
 ## Getting Started
