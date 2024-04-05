@@ -50,12 +50,18 @@ The key benefits of ArchI include:
 - Enhanced knowledge: ArchI utilizes data from the official ArchWiki documentation, providing accurate and comprehensive answers to Arch Linux-related questions.
 - Modular design: ArchI supports different language models, allowing users to customize and extend its capabilities.
 - Simplified installation: ArchI provides step-by-step instructions and examples to help users set up their Arch Linux environment.
+- Simplified installation: ArchI provides step-by-step instructions and examples to help users set up their Arch Linux environment.
 
 By combining the power of AI and the wealth of information available in the Arch Linux ecosystem, ArchI enhances the user experience by providing fast, easy, and simple support for new users, administrators, and programmers.
 
+More features will be added in future updates to further enhance the user experience.
+
 ## Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Python
+Langchain
+Chroma
+
 
 ## Getting Started
 
