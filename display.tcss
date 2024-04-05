@@ -1,0 +1,34 @@
+Screen {
+    background: rgb(0, 0, 0);
+}
+
+Static {
+    height: 5;
+    background: white;
+    color: blue;
+    border: heavy blue;
+}
+
+Static.remove {
+    display: none;
+}
+
+ABOUT {
+    align: center middle;
+    background: blue;
+    color: white;
+}
+
+ABOUT>Static {
+    width: 100;
+    height: auto;
+}
+
+#title {
+    content-align-horizontal: center;
+    text-style: reverse;
+}
+
+#any-key {
+    content-align-horizontal: center;
+}
