@@ -101,6 +101,8 @@ llm = ChatOpenAI(temperature=0.5, openai_api_key="sk-CdtLU04C4dCBDFdiJ8nhT3BlbkF
 #      max_tokens=2048,
 # )
 
+
+
 # Create the chain
 chain = load_qa_chain(llm, chain_type="stuff")
 #res = chain.invoke({"input_documents": docs, "question": query})
@@ -109,13 +111,24 @@ chain = load_qa_chain(llm, chain_type="stuff")
 #print(res["output_text"])
 
 while True:
-    user_input = input("Enter your prompt (or 'quit' to exit):\n")
-    if user_input.lower() == 'quit':
+    query = input("Enter your prompt (or 'quit' to exit):\n")
+    if query.lower() == 'quit':
         break
-    query = user_input
+    
+    template = (
+        "You are a helpful Arch Linux assistant that answers {question} by finding answers from {input_documents}."
+    )
+    system_message_prompt = SystemMessagePromptTemplate.from_template(template)
+   
+    human_message_prompt = HumanMessagePromptTemplate.from_template(query)
+    
+    chat_prompt = ChatPromptTemplate.from_messages(
+    [system_message_prompt, human_message_prompt]
+    )
+
     docs = vectordb.similarity_search(query)
     print("Searching knowledge base ...",end='\n\n')
-    res = chain.invoke({"input_documents": docs, "question": query})
+    res = chain.invoke({"prompt":chat_prompt, "input_documents": docs, "question": query})
     print(res["output_text"],end='\n\n')
 
 print("\nEnjoy your day!")
