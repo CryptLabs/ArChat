@@ -31,11 +31,8 @@ print(colored(f.renderText('ArchI'), 'green'))
 
 # Adding a subtitle
 #f = Figlet(font='standard')
-print(" Version 0.1\n")
-print(colored('Your Terminal Friendly Arch Linux AI Assistant!\n'))
-print("Loading ...\n")
-
-
+print(colored('Your Terminal Friendly Arch Linux AI Assistant!\n','cyan'))
+print(colored("Loading ...\n", 'green'))
 
 def parse_args(config: dict, args: list):
     """Parses command line arguments.
@@ -109,9 +106,9 @@ chain = load_qa_chain(llm, chain_type="stuff")
 
 # Print the result
 #print(res["output_text"])
-
+print(colored("Hello, I'm ArchI! How can I assist you today?\n", 'cyan'))
 while True:
-    query = input("Enter your prompt (or 'quit' to exit):\n")
+    query = input(colored("Enter your prompt (or 'quit' to exit):\n\n", 'cyan'))
     if query.lower() == 'quit':
         break
     
@@ -127,7 +124,7 @@ while True:
     )
 
     docs = vectordb.similarity_search(query)
-    print("Searching knowledge base ...",end='\n\n')
+    print(colored("\nSearching knowledge base ...\n\n", 'red'))
     res = chain.invoke({"prompt":chat_prompt, "input_documents": docs, "question": query})
     print(res["output_text"],end='\n\n')
 
