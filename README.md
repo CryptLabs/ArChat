@@ -39,18 +39,19 @@
 * [Acknowledgements](#acknowledgements)
 
 ## About The Project
+Arch Linux can be challenging for new users due to its minimalistic and do-it-yourself approach. The installation process requires manual configuration and a good understanding of Linux systems. Additionally, troubleshooting and finding relevant information from the official ArchWiki documentation can be time-consuming for both new users and experienced administrators.
 
-![Screen Shot](images/archi.png)
+ArchI aims to simplify the Arch Linux experience by providing a terminal-friendly AI assistant. It leverages data from the official ArchWiki documentation to provide fast and easy support for new users, administrators, and programmers. With ArchI, users can quickly access information, troubleshoot issues, and find solutions without the need for a desktop environment or a browser.
 
-* Very simple to use!
-* Terminal-friendly: ArchI runs directly on the terminal without the need for a desktop environment or a browser.
-* Remote access: ArchI can be accessed remotely over SSH using terminal apps.
-* Offline capability: ArchI can be used locally without an internet connection.
-* Enhanced knowledge: ArchI utilizes data from the official ArchWiki documentation, providing more accurate and comprehensive answers to Arch Linux-related questions.
-* Modular design: ArchI supports the use of different language models (LLMs) such as OpenAI ChatGPT, GPT4ALL, Ollama, allowing for flexibility and customization.
-* More functions will be added.
+The key benefits of ArchI include:
+- Terminal-friendly: ArchI runs directly on the terminal, making it accessible even without a graphical user interface.
+- Remote access: ArchI can be accessed remotely over SSH, allowing users to get support from anywhere.
+- Offline capability: ArchI can be used locally without an internet connection, ensuring uninterrupted access to documentation and support.
+- Enhanced knowledge: ArchI utilizes data from the official ArchWiki documentation, providing accurate and comprehensive answers to Arch Linux-related questions.
+- Modular design: ArchI supports different language models, allowing users to customize and extend its capabilities.
+- Simplified installation: ArchI provides step-by-step instructions and examples to help users set up their Arch Linux environment.
 
-
+By combining the power of AI and the wealth of information available in the Arch Linux ecosystem, ArchI enhances the user experience by providing fast, easy, and simple support for new users, administrators, and programmers.
 
 ## Built With
 
