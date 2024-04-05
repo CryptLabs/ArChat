@@ -125,7 +125,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/CryptLabs/Ar
 
 ## Authors
 
-* **Ali A. Reihani** - *MSc CS with AI* - [CryptLabs](https://cryptlabs.com)
+* **Ali A. Reihani** - [CryptLabs](https://cryptlabs.com)
 
 ## Acknowledgements
 
