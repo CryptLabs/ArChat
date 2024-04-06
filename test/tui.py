@@ -1,11 +1,18 @@
 from typing import Coroutine
 from textual.app import App, ComposeResult
+from textual.widget import Widget
 from textual.widgets import Pretty
 from textual.widgets import Header, Footer
 from textual.widgets import Static
+from textual.widgets import Button
+from textual.widgets import Input
+from textual.widgets import Label
 from textual import events
 from textual.screen import Screen
 
+import archi.py
+
+archi.chain
 
 
 # blue screen of death
@@ -23,15 +30,15 @@ class ABOUT(Screen):
         yield Static(ABOUT_TEXT)
         yield Static("Press Esc to continue [blink]_[/]", id="any-key")
 
-
+class LabelledInput(Widget):
+    def compose(self):
+        #yield Label("Ask:")
+        yield Input(placeholder="Ask me anything...")
 
 class ArchIApp(App):
     CSS_PATH = "display.tcss"
-    
     SCREENS = {"about": ABOUT()}
-    
     BINDINGS = [("b", "push_screen('about')", "About"),("d", "toggle_dark", "Toggle dark mode"),("g", "toggle_green", "Toggle green mode")]
-    
     COLORS = [
         "white",
         "maroon",
@@ -48,6 +55,10 @@ class ArchIApp(App):
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
         yield Footer()
+        yield Button()
+        yield LabelledInput()
+
+
         #yield Pretty(DATA)
 
         # yield Static("Widget 1")
@@ -68,6 +79,7 @@ class ArchIApp(App):
     def on_key(self, event: events.Key) -> None:
         if event.key.isdecimal():
             self.screen.styles.background = self.COLORS[int(event.key)]
+
 
 
 if __name__ == "__main__":

@@ -32,3 +32,8 @@ ABOUT>Static {
 #any-key {
     content-align-horizontal: center;
 }
+
+
+LabelledInput {
+    height: 4;
+}
