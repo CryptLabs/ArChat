@@ -4,7 +4,7 @@ Screen {
 
 Static {
     height: auto;
-    background: blue;
+    background: black;
     color: white;
     border: heavy yellow;
 }

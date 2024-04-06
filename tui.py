@@ -13,15 +13,8 @@ from textual.widgets import RichLog
 from textual.widgets import Placeholder
 from textual.widgets import LoadingIndicator
 from textual.reactive import Reactive
-from rich.align import Align
-from rich.box import DOUBLE
-from rich.console import RenderableType
-from rich.panel import Panel
-from rich.style import Style
-from rich.text import Text
-
+from textual.containers import Horizontal, VerticalScroll
 from textual import events
-
 from pyfiglet import Figlet
 import archi
 import sys
@@ -44,38 +37,6 @@ class ABOUT(Screen):
         yield Static(ABOUT_TEXT, id="about")
         yield Static("Press Esc to continue", id="any-key")
         
-class InputText(Widget):
-    title: Reactive[RenderableType] = Reactive("")
-    content: Reactive[RenderableType] = Reactive("")
-
-    def __init__(self, title: str):
-        super().__init__(title)
-        self.title = title
-
-    def on_key(self, event: events.Key) -> None:
-        self.content += event.key
-
-    def validate_title(self, value) -> None:
-        try:
-          return value.lower()
-        except (AttributeError, TypeError):
-          raise AssertionError('title attribute should be a string.')
-
-    def on_click(self) -> None:
-        sys.exit(0)
-
-    def render(self) -> RenderableType:
-        renderable = Align.left(Text("", style="bold"))
-        return Panel(
-            renderable,
-            title=self.title,
-            title_align="center",
-            height=3,
-            style="bold white on rgb(50,57,50)",
-            border_style=Style(color="green"),
-            box=DOUBLE,
-        )
-
 class ArchIApp(App):
     
     CSS_PATH = "display.tcss"
@@ -99,29 +60,15 @@ class ArchIApp(App):
         "teal",
         "aqua",
     ]
-   
-    # async def on_mount(self) -> None:
-    #     await InputText("input field")
-        
+
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
         yield Static("Hello, I'm ArchI! How may I assist you today?", id="ask_window")
         yield Footer()
         yield Input("Ask me anything", id="ask_input")
-        yield Button("Ask", id="ask_button")
-
-
-        
-    def action_ask_archi(self):
-        #yield Label("Ask:")
-        llm_type = "ChatOpenAI"
-        llm = archi.load_llm(llm_type)
-
-        query = "What is the the best editor for the terminal in Arch Linux?"
-        chat_prompt = archi.create_chat_prompt(query)
-        get_answer = archi.get_answer(llm, chat_prompt, query)
-        
-        self.mount(Static(get_answer,id="answer"))
+        yield Horizontal(
+            Button("Ask", id="ask_button")
+        )
         
     def action_quit(self) -> None:  
             sys.exit(0)
@@ -140,11 +87,11 @@ class ArchIApp(App):
     def on_key(self, event: events.Key) -> None:
         if event.key.isdecimal():
             self.screen.styles.background = self.COLORS[int(event.key)]
-            
+
             
     def ask(self, query):
          #yield Label("Ask:")
-        llm_type = "ChatOpenAI"
+        llm_type = "GPT4All"
         llm = archi.load_llm(llm_type)
 
         #query = "What is the the best editor for the terminal in Arch Linux?"
@@ -156,8 +103,8 @@ class ArchIApp(App):
         """Submit the asked question."""
         input = self.query_one(Input)
         query = input.value
-        self.query_one(Static).update(self.ask(query))
         self.query_one(Input).value = ""
+        self.query_one(Static).update(self.ask(query))
 
 
 if __name__ == "__main__":
