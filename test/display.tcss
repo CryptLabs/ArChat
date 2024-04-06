@@ -42,4 +42,19 @@ Label {
     color: rgb(197, 24, 24);
     height: auto;
     width: auto;
+    border: blank;
 }
+
+#ask {
+    dock: top;
+    width: auto;
+    height: auto;
+    color: #0f2b41;
+    background: dodgerblue;
+}
+
+/* #answer {
+    dock: top;
+    color: #0f2b41;
+    background: dodgerblue;
+} */

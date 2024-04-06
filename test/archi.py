@@ -22,17 +22,17 @@ from langchain_core.prompts.chat import (
     SystemMessagePromptTemplate,
 )
 
-from pyfiglet import Figlet
-from termcolor import colored
+# from pyfiglet import Figlet
+# from termcolor import colored
 
-f = Figlet(font='slant')
+# f = Figlet(font='slant')
 
-print(colored(f.renderText('ArchI'), 'green'))
+# print(colored(f.renderText('ArchI'), 'green'))
 
-# Adding a subtitle
-#f = Figlet(font='standard')
-print(colored('Your Terminal Friendly Arch Linux AI Assistant!\n','yellow'))
-print(colored("Loading ...\n", 'green'))
+# # Adding a subtitle
+# #f = Figlet(font='standard')
+# print(colored('Your Terminal Friendly Arch Linux AI Assistant!\n','yellow'))
+# print(colored("Loading ...\n", 'green'))
 
 def parse_args(config: dict, args: list):
     """Parses command line arguments.

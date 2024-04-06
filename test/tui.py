@@ -9,7 +9,7 @@ from textual.widgets import Input
 from textual.widgets import Label
 from textual import events
 from textual.screen import Screen
-
+from textual.widgets import Placeholder
 import archi
 
 
@@ -57,7 +57,7 @@ class ArchIApp(App):
         yield Header(show_clock=True)
         yield Footer()
         #yield Button()
-        #yield Input("Ask ArchI")
+        #yield Input("Ask ArchI", id="ask")
 
 
         #yield Pretty(DATA)
@@ -75,7 +75,7 @@ class ArchIApp(App):
         chat_prompt = archi.create_chat_prompt(query)
         get_answer = archi.get_answer(llm, chat_prompt, query)
         
-        self.mount(Label(get_answer))  
+        self.mount(Static(get_answer,id="answer"))  
 
         
     def action_toggle_dark(self) -> None:
