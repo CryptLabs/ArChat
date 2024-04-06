@@ -3,10 +3,17 @@ Screen {
 }
 
 Static {
-    height: 5;
-    background: white;
-    color: blue;
-    border: heavy blue;
+    height: auto;
+    background: blue;
+    color: white;
+    border: heavy yellow;
+}
+
+#ask_window {
+    height: auto;
+    background: blue;
+    color: white;
+    border: heavy yellow;
 }
 
 Static.remove {
@@ -31,9 +38,8 @@ ABOUT>Static {
     height: auto;
 }
 
-#title {
+#ask_title {
     content-align-horizontal: center;
-    text-style: reverse;
 }
 
 #any-key {
@@ -69,4 +75,18 @@ Label {
 
 Header  {
     color: #f6f61a;
+}
+
+#ask_button {
+    align: center middle;
+    width: auto;
+    height: auto;
+
+}
+
+#ask_input {
+    align: center middle;
+    width: 100%;
+    height: auto;
+    border: blue;
 }

@@ -80,7 +80,7 @@ class ArchIApp(App):
     
     CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
-    BINDINGS = [("a", "ask_archi", "Ask ArchI"),
+    BINDINGS = [
                 ("d", "toggle_dark", "Toggle dark mode"),
                 # ("g", "toggle_green", "Toggle green mode"),
                 ("b", "push_screen('about')", "About"),
@@ -105,10 +105,11 @@ class ArchIApp(App):
         
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
+        yield Static("Hello, I'm ArchI! How may I assist you today?", id="ask_window")
         yield Footer()
-        yield InputText(title="ewqe")
-        #yield Button()
-        #yield Input("Ask ArchI", id="ask") 
+        yield Input("Ask me anything", id="ask_input")
+        yield Button("Ask", id="ask_button")
+
 
         
     def action_ask_archi(self):
@@ -139,7 +140,24 @@ class ArchIApp(App):
     def on_key(self, event: events.Key) -> None:
         if event.key.isdecimal():
             self.screen.styles.background = self.COLORS[int(event.key)]
+            
+            
+    def ask(self, query):
+         #yield Label("Ask:")
+        llm_type = "ChatOpenAI"
+        llm = archi.load_llm(llm_type)
 
+        #query = "What is the the best editor for the terminal in Arch Linux?"
+        chat_prompt = archi.create_chat_prompt(query)
+        get_answer = archi.get_answer(llm, chat_prompt, query)
+        return get_answer
+
+    def on_button_pressed(self) -> None:
+        """Submit the asked question."""
+        input = self.query_one(Input)
+        query = input.value
+        self.query_one(Static).update(self.ask(query))
+        self.query_one(Input).value = ""
 
 
 if __name__ == "__main__":
