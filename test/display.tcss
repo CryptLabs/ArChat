@@ -34,6 +34,12 @@ ABOUT>Static {
 }
 
 
-LabelledInput {
+Input {
     height: 4;
+}
+
+Label {
+    color: rgb(197, 24, 24);
+    height: auto;
+    width: auto;
 }

@@ -10,9 +10,8 @@ from textual.widgets import Label
 from textual import events
 from textual.screen import Screen
 
-import archi.py
+import archi
 
-archi.chain
 
 
 # blue screen of death
@@ -23,22 +22,24 @@ ArchI aims to simplify the Arch Linux experience by providing a terminal-friendl
 """
 
 class ABOUT(Screen):
-    BINDINGS = [("escape", "app.pop_screen", "Pop screen")]
+    BINDINGS = [("escape", "app.pop_screen", "Pop screen"),
+                
+                ]
 
     def compose(self) -> ComposeResult:
         yield Static(" About", id="title")
         yield Static(ABOUT_TEXT)
         yield Static("Press Esc to continue [blink]_[/]", id="any-key")
 
-class LabelledInput(Widget):
-    def compose(self):
-        #yield Label("Ask:")
-        yield Input(placeholder="Ask me anything...")
 
 class ArchIApp(App):
     CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
-    BINDINGS = [("b", "push_screen('about')", "About"),("d", "toggle_dark", "Toggle dark mode"),("g", "toggle_green", "Toggle green mode")]
+    BINDINGS = [("b", "push_screen('about')", "About"),
+                ("d", "toggle_dark", "Toggle dark mode"),
+                ("g", "toggle_green", "Toggle green mode"),
+                ("a", "ask_archi", "Ask ArchI"),
+                ]
     COLORS = [
         "white",
         "maroon",
@@ -55,8 +56,8 @@ class ArchIApp(App):
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
         yield Footer()
-        yield Button()
-        yield LabelledInput()
+        #yield Button()
+        #yield Input("Ask ArchI")
 
 
         #yield Pretty(DATA)
@@ -64,6 +65,18 @@ class ArchIApp(App):
         # yield Static("Widget 1")
         # yield Static("Widget 2", classes="remove")
         # yield Static("Widget 3")
+        
+    def action_ask_archi(self):
+        #yield Label("Ask:")
+        llm_type = "ChatOpenAI"
+        llm = archi.load_llm(llm_type)
+
+        query = "What is the the best editor for the terminal in Arch Linux?"
+        chat_prompt = archi.create_chat_prompt(query)
+        get_answer = archi.get_answer(llm, chat_prompt, query)
+        
+        self.mount(Label(get_answer))  
+
         
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""

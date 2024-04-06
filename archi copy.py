@@ -102,8 +102,8 @@ def greet_user():
     print(colored("Hello, I'm ArchI! How can I assist you today?\n", 'cyan'))
 
 def get_user_query():
-    return input(colored("\nEnter your prompt (or 'quit' to exit):\n", 'cyan'))
-
+    #return input(colored("\nEnter your prompt (or 'quit' to exit):\n", 'cyan'))
+    pass
 
 def create_chat_prompt(query):
     template = (
