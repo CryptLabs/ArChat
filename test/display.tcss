@@ -17,7 +17,14 @@ ABOUT {
     align: center middle;
     background: blue;
     color: white;
+
 }
+
+/* #about  {
+    width: 100;
+    height: auto;
+
+} */
 
 ABOUT>Static {
     width: 100;
@@ -31,6 +38,7 @@ ABOUT>Static {
 
 #any-key {
     content-align-horizontal: center;
+    color: black;
 }
 
 
@@ -58,3 +66,7 @@ Label {
     color: #0f2b41;
     background: dodgerblue;
 } */
+
+Header  {
+    color: #f6f61a;
+}

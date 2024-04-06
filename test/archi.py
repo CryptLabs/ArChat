@@ -1,20 +1,16 @@
 import os
-print(os.getcwd())
-
 import sys
 import argparse
 import yaml
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.llms import GPT4All
-
 from langchain import hub
 from langchain.prompts.chat import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import ChatOpenAI
-
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts.chat import (
     ChatPromptTemplate,
