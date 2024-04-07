@@ -1,0 +1,10 @@
+langchain==0.1.14
+langchain_community==0.0.31
+langchain_core==0.1.40
+langchain_openai==0.1.1
+pyfiglet==1.0.2
+PyYAML==6.0.1
+PyYAML==6.0.1
+textual==0.56.0
+torch==2.2.2
+tqdm==4.66.2

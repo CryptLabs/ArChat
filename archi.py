@@ -35,9 +35,12 @@ def parse_args(config: dict, args: list):
     if args.test_embed:
         config["Arch_Linux_Data_Sources"] = ["archwiki"]
         config["data_dir"] = "./test_data"
-        config["question"] = "What is the the best editor for the terminal in Arch Linux?"
+        config["question"] = (
+            "What is the the best editor for the terminal in Arch Linux?"
+        )
 
     return config
+
 
 def load_config():
     """Loads configuration from config.yaml file.
@@ -57,14 +60,19 @@ def load_config():
 
     return data
 
+
 config = load_config()
 
-#print(config['Arch_Linux_Data_Sources'])
+# print(config['Arch_Linux_Data_Sources'])
+
 
 # Load an LLM
 def load_llm(llm_type):
     if llm_type == "ChatOpenAI":
-        llm = ChatOpenAI(temperature=0.5, openai_api_key="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")
+        llm = ChatOpenAI(
+            temperature=0.5,
+            openai_api_key="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",
+        )
     elif llm_type == "GPT4All":
         llm = GPT4All(
             model=r"/home/al1nux/Projects/models/orca-mini-3b-gguf2-q4_0.gguf",
@@ -74,37 +82,45 @@ def load_llm(llm_type):
         raise ValueError("Invalid LLM type")
     return llm
 
+
 def create_chat_prompt(query):
-    template = (
-        """You are a helpful Arch Linux assistant that answers {question} by finding answers from {input_documents}.
+    template = """You are a helpful Arch Linux assistant that answers {question} by finding answers from {input_documents}.
         """
-    )
     system_message_prompt = SystemMessagePromptTemplate.from_template(template)
-   
+
     human_message_prompt = HumanMessagePromptTemplate.from_template(query)
-    
+
     chat_prompt = ChatPromptTemplate.from_messages(
-    [system_message_prompt, human_message_prompt]
+        [system_message_prompt, human_message_prompt]
     )
     return chat_prompt
 
+
 def search_knowledge_base(query):
-    
+
     embeddings = HuggingFaceEmbeddings(
-            cache_folder="./model",
-            model_name=config["embeddings_model"],
-            show_progress=False,
+        cache_folder="./model",
+        model_name=config["embeddings_model"],
+        show_progress=False,
     )
-    
-    vectordb = Chroma(persist_directory=config["data_dir"],
-                    embedding_function=embeddings)
-    
+
+    vectordb = Chroma(
+        persist_directory=config["data_dir"], embedding_function=embeddings
+    )
+
     docs = vectordb.similarity_search(query)
-    
+
     return docs
+
 
 def get_answer(llm, chat_prompt, query):
     chain = load_qa_chain(llm, chain_type="stuff")
-    res = chain.invoke({"prompt": chat_prompt, "input_documents": search_knowledge_base(query), "question": query})
-#    
+    res = chain.invoke(
+        {
+            "prompt": chat_prompt,
+            "input_documents": search_knowledge_base(query),
+            "question": query,
+        }
+    )
+    #
     return res["output_text"]

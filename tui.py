@@ -1,17 +1,20 @@
 from typing import Coroutine
 from textual.app import App, ComposeResult
 from textual.widget import Widget
-from textual.widgets import Pretty
-from textual.widgets import Header, Footer
-from textual.widgets import Static
-from textual.widgets import Button
-from textual.widgets import Input
-from textual.widgets import Label
+from textual.widgets import (
+    Pretty,
+    Header,
+    Footer,
+    Static,
+    Button,
+    Input,
+    Label,
+    RichLog,
+    Placeholder,
+    LoadingIndicator,
+)
 from textual import events
 from textual.screen import Screen
-from textual.widgets import RichLog
-from textual.widgets import Placeholder
-from textual.widgets import LoadingIndicator
 from textual.reactive import Reactive
 from textual.containers import Horizontal, VerticalScroll
 from textual import events
@@ -20,14 +23,16 @@ import archi
 import sys
 
 
-
 # About screen
-f = Figlet(font='slant')
-ABOUT_TEXT = f.renderText('ArchI') + """
+f = Figlet(font="slant")
+ABOUT_TEXT = (
+    f.renderText("ArchI")
+    + """
 Arch Linux can be challenging for new users due to its minimalistic and do-it-yourself approach. The installation process requires manual configuration and a good understanding of Linux systems. Additionally, troubleshooting and finding relevant information from the official ArchWiki documentation can be time-consuming for both new users and experienced administrators.
-
 ArchI aims to simplify the Arch Linux experience by providing a terminal-friendly AI assistant. It leverages data from the official ArchWiki documentation to provide fast and easy support for new users, administrators, and programmers. With ArchI, users can quickly access information, troubleshoot issues, and find solutions without the need for a desktop environment or a browser.
 """
+)
+
 
 class ABOUT(Screen):
     BINDINGS = [("escape", "app.pop_screen", "Pop screen")]
@@ -36,18 +41,18 @@ class ABOUT(Screen):
         yield Static(" About", id="title")
         yield Static(ABOUT_TEXT, id="about")
         yield Static("Press Esc to continue", id="any-key")
-        
+
+
 class ArchIApp(App):
-    
+
     CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
     BINDINGS = [
-                ("d", "toggle_dark", "Toggle dark mode"),
-                # ("g", "toggle_green", "Toggle green mode"),
-                ("b", "push_screen('about')", "About"),
-                ("q", "quit", "Quit")
-
-                ]
+        ("d", "toggle_dark", "Toggle dark mode"),
+        # ("g", "toggle_green", "Toggle green mode"),
+        ("b", "push_screen('about')", "About"),
+        ("q", "quit", "Quit"),
+    ]
     COLORS = [
         "white",
         "maroon",
@@ -66,13 +71,11 @@ class ArchIApp(App):
         yield Static("Hello, I'm ArchI! How may I assist you today?", id="ask_window")
         yield Footer()
         yield Input("Ask me anything", id="ask_input")
-        yield Horizontal(
-            Button("Ask", id="ask_button")
-        )
-        
-    def action_quit(self) -> None:  
-            sys.exit(0)
-    
+        yield Horizontal(Button("Ask", id="ask_button"))
+
+    def action_quit(self) -> None:
+        sys.exit(0)
+
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""
         self.dark = not self.dark
@@ -88,13 +91,12 @@ class ArchIApp(App):
         if event.key.isdecimal():
             self.screen.styles.background = self.COLORS[int(event.key)]
 
-            
     def ask(self, query):
-         #yield Label("Ask:")
+        # yield Label("Ask:")
         llm_type = "GPT4All"
         llm = archi.load_llm(llm_type)
 
-        #query = "What is the the best editor for the terminal in Arch Linux?"
+        # query = "What is the the best editor for the terminal in Arch Linux?"
         chat_prompt = archi.create_chat_prompt(query)
         get_answer = archi.get_answer(llm, chat_prompt, query)
         return get_answer
@@ -109,5 +111,5 @@ class ArchIApp(App):
 
 if __name__ == "__main__":
     app = ArchIApp()
-    app.title = "ArchI"    
+    app.title = "ArchI"
     app.run()
