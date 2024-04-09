@@ -18,6 +18,11 @@ from textual.screen import Screen
 from textual.reactive import Reactive
 from textual.containers import Horizontal, VerticalScroll
 from textual import events
+from textual import log
+from textual_terminal import Terminal
+from textual.css.query import NoMatches
+
+
 from pyfiglet import Figlet
 import archi
 import sys
@@ -43,28 +48,33 @@ class ABOUT(Screen):
         yield Static("Press Esc to continue", id="any-key")
 
 
+class TerminalPlaceholder(Placeholder):
+    pass
+
+
 class ArchIApp(App):
 
     CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
     BINDINGS = [
+        ("1", "start_1", "Start Terminal 1"),
+        ("2", "start_2", "Start Terminal 2"),
         ("d", "toggle_dark", "Toggle dark mode"),
         # ("g", "toggle_green", "Toggle green mode"),
         ("b", "push_screen('about')", "About"),
-        ("q", "quit", "Quit"),
+        ("q", "quit", "Exit"),
     ]
-    COLORS = [
-        "white",
-        "maroon",
-        "red",
-        "purple",
-        "fuchsia",
-        "olive",
-        "yellow",
-        "navy",
-        "teal",
-        "aqua",
-    ]
+
+    COMMANDS = {
+        "terminal_1": "bash",
+        "terminal_2": "bash",
+        # "terminal_2": "htop -d15",s
+    }
+
+    COLORS = {
+        "terminal_1": "system",
+        "terminal_2": "textual",
+    }
 
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
@@ -72,6 +82,57 @@ class ArchIApp(App):
         yield Footer()
         yield Input("Ask me anything", id="ask_input")
         yield Horizontal(Button("Ask", id="ask_button"))
+
+        yield VerticalScroll(
+            Static("Terminal 1:", id="terminal_1_label"),
+            TerminalPlaceholder("Terminal 1", id="terminal_1_ph"),
+            # Terminal(self.COMMANDS["terminal_1"]),
+            # Static("Terminal 2:", id="terminal_2_label"),
+            # TerminalPlaceholder("Terminal 2", id="terminal_2_ph"),
+            # Terminal(self.COMMANDS["terminal_2"]),
+            classes="terminals",
+        )
+
+    def attach_terminal(self, name: str) -> None:
+        try:
+            self.query_one(f"#{name}_ph").remove()
+        except NoMatches:
+            log.warning(f"terminal {name} already attached")
+            return
+
+        log("attach terminal with id:", name)
+        self.app.mount(
+            Terminal(
+                command=self.COMMANDS[name], id=name, default_colors=self.COLORS[name]
+            ),
+            after=f"#{name}_label",
+        )
+
+    def start_terminal(self, name: str) -> None:
+        try:
+            terminal: Terminal = self.app.query_one(f"Terminal#{name}")
+        except NoMatches:
+            log("no matches:", f"Terminal#{name}")
+            return
+
+        terminal.start()
+
+    def stop_terminal(self, name: str) -> None:
+        try:
+            terminal: Terminal = self.app.query_one(f"Terminal#{name}")
+        except NoMatches:
+            log("no matches:", f"Terminal#{name}")
+            return
+
+        terminal.stop()
+
+    def action_start_1(self) -> None:
+        self.attach_terminal("terminal_1")
+        self.start_terminal("terminal_1")
+
+    def action_start_2(self) -> None:
+        self.attach_terminal("terminal_2")
+        self.start_terminal("terminal_2")
 
     def action_quit(self) -> None:
         sys.exit(0)
@@ -87,13 +148,13 @@ class ArchIApp(App):
     # def on_mount(self) -> None:
     #     self.screen.styles.background = "darkblue"
 
-    def on_key(self, event: events.Key) -> None:
-        if event.key.isdecimal():
-            self.screen.styles.background = self.COLORS[int(event.key)]
+    # def on_key(self, event: events.Key) -> None:
+    #     if event.key.isdecimal():
+    #         self.screen.styles.background = self.COLORS[int(event.key)]
 
     def ask(self, query):
         # yield Label("Ask:")
-        llm_type = "ChatOpenAI"
+        llm_type = "GPT4All"
         llm = archi.load_llm(llm_type)
 
         # query = "What is the the best editor for the terminal in Arch Linux?"

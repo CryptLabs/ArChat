@@ -1,30 +1,29 @@
 Screen {
-    background: rgb(0, 0, 0);
+  background: blue;
 }
 
 Static {
-    height: auto;
-    background: black;
-    color: white;
-    border: heavy yellow;
+  height: auto;
+  background: blue;
+  color: white;
+  border: heavy yellow;
 }
 
 #ask_window {
-    height: auto;
-    background: blue;
-    color: white;
-    border: heavy yellow;
+  height: auto;
+  background: blue;
+  color: white;
+  border: heavy black;
 }
 
 Static.remove {
-    display: none;
+  display: none;
 }
 
 ABOUT {
-    align: center middle;
-    background: blue;
-    color: white;
-
+  align: center middle;
+  background: blue;
+  color: white;
 }
 
 /* #about  {
@@ -33,38 +32,37 @@ ABOUT {
 
 } */
 
-ABOUT>Static {
-    width: 100;
-    height: auto;
+ABOUT > Static {
+  width: 100;
+  height: auto;
 }
 
 #ask_title {
-    content-align-horizontal: center;
+  content-align-horizontal: center;
 }
 
 #any-key {
-    content-align-horizontal: center;
-    color: black;
+  content-align-horizontal: center;
+  color: black;
 }
 
-
 Input {
-    height: 4;
+  height: 4;
 }
 
 Label {
-    color: rgb(197, 24, 24);
-    height: auto;
-    width: auto;
-    border: blank;
+  color: rgb(197, 24, 24);
+  height: auto;
+  width: auto;
+  border: blank;
 }
 
 #ask {
-    dock: top;
-    width: auto;
-    height: auto;
-    color: #0f2b41;
-    background: dodgerblue;
+  dock: top;
+  width: auto;
+  height: auto;
+  color: #0f2b41;
+  background: grey;
 }
 
 /* #answer {
@@ -73,20 +71,38 @@ Label {
     background: dodgerblue;
 } */
 
-Header  {
-    color: #f6f61a;
+Header {
+  color: #f6f61a;
 }
 
 #ask_button {
-    align: center middle;
-    width: auto;
-    height: auto;
-
+  align: center middle;
+  width: auto;
+  height: auto;
 }
 
 #ask_input {
-    align: center middle;
-    width: 100%;
-    height: auto;
-    border: blue;
+  align: center middle;
+  width: 100%;
+  height: auto;
+  border: black;
+  background: black;
+}
+.terminals {
+  height: 1fr;
+}
+.terminals TerminalPlaceholder {
+  width: auto;
+  height: 100;
+  margin-bottom: 1;
+  background: black;
+}
+.terminals #terminal_1 {
+  width: auto;
+  height: 100;
+  margin-bottom: 1;
+}
+.terminals #terminal_2 {
+  width: 80;
+  height: 24;
 }
