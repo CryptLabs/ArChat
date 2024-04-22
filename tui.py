@@ -45,7 +45,9 @@ class ABOUT(Screen):
 
 class ArchIApp(App):
 
-    CSS_PATH = "display.tcss"
+    CSS_PATH = "grid_layout_auto.tcss"
+
+    #CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
     BINDINGS = [
         ("d", "toggle_dark", "Toggle dark mode"),
@@ -66,12 +68,22 @@ class ArchIApp(App):
         "aqua",
     ]
 
+    # def compose(self) -> ComposeResult:
+    #     yield Header(show_clock=True)
+    #     yield Static("Hello, I'm ArchI! How may I assist you today?", id="ask_window")
+    #     yield Footer()
+    #     yield Input("Ask me anything", id="ask_input")
+    #     yield Horizontal(Button("Ask", id="ask_button"))
+    
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
-        yield Static("Hello, I'm ArchI! How may I assist you today?", id="ask_window")
+        yield Static("  Hello, I'm ArchI! How may I assist you today?", id="ask_window",classes="box")
+        yield Input("Ask me anything ...", id="ask_input",classes="box")
+        yield Button("Ask", id="ask_button", classes="box")
         yield Footer()
-        yield Input("Ask me anything", id="ask_input")
-        yield Horizontal(Button("Ask", id="ask_button"))
+
+      
+
 
     def action_quit(self) -> None:
         sys.exit(0)

@@ -1,0 +1,38 @@
+Screen {
+    layout: grid;
+    grid-size: 3;
+    grid-gutter: 1;
+    grid-columns: 1fr 1fr 1fr;  
+    grid-rows: 10% 75%;
+    background: blue
+
+}
+
+
+.box {
+    background: darkmagenta;
+    height: 100%;
+}
+
+#ask_window {
+    column-span: 3;
+    row-span: 2;
+    height: 100%;
+    background: blue;
+    color: white;
+    border:white;
+  }
+
+#ask_input {
+    column-span: 2;
+    align: center middle;
+    width: 100%;
+    height: auto;
+    background: black;
+  }
+
+#ask_button {
+    align: center middle;
+    width: auto;
+    height: auto;
+}

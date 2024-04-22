@@ -71,6 +71,7 @@ def load_llm(llm_type):
     if llm_type == "ChatOpenAI":
         llm = ChatOpenAI(
             temperature=0.5,
+            model="gpt-4",
             openai_api_key="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",
         )
     elif llm_type == "GPT4All":
