@@ -25,6 +25,7 @@ import sys
 
 # About screen
 f = Figlet(font="slant")
+BANNER = f.renderText("ArchI")
 ABOUT_TEXT = (
     f.renderText("ArchI")
     + """
@@ -50,9 +51,15 @@ class ArchIApp(App):
     #CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
     BINDINGS = [
-        ("d", "toggle_dark", "Toggle dark mode"),
+        #("d", "toggle_dark", "Toggle dark mode"),
         # ("g", "toggle_green", "Toggle green mode"),
         ("b", "push_screen('about')", "About"),
+        ("s", "search", "Search Packages"),
+        ("g", "g", "Get Packages"),
+        ("r", "r", "Remove Packages"),
+
+        
+
         ("q", "quit", "Quit"),
     ]
     COLORS = [
@@ -77,7 +84,7 @@ class ArchIApp(App):
     
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
-        yield Static("  Hello, I'm ArchI! How may I assist you today?", id="ask_window",classes="box")
+        yield Static(BANNER+"\n  Hello, I'm ArchI! How may I assist you today?", id="answer_window",classes="box")
         yield Input("Ask me anything ...", id="ask_input",classes="box")
         yield Button("Ask", id="ask_button", classes="box")
         yield Footer()

@@ -8,13 +8,17 @@ Screen {
 
 }
 
+Header {
+    color: #f6f61a;
+    background: black;
+  }
 
 .box {
     background: darkmagenta;
     height: 100%;
 }
 
-#ask_window {
+#answer_window {
     column-span: 3;
     row-span: 2;
     height: 100%;
