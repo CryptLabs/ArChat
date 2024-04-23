@@ -71,7 +71,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Usage
 
-![Screen Shot](images/archi-pacman.png)
+![Screen Shot](images/archi.png)
 
 ## Roadmap
 
