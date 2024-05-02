@@ -4,6 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+textual = "*"
+pyfiglet = "*"
+pyyaml = "*"
+langchain-community = "*"
+langchain = "*"
+langchain-openai = "*"
+sentence-transformers = "*"
+chromadb = "*"
 
 [dev-packages]
 

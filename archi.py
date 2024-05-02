@@ -17,7 +17,9 @@ from langchain_core.prompts.chat import (
     HumanMessagePromptTemplate,
     SystemMessagePromptTemplate,
 )
+import openai
 
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
 def parse_args(config: dict, args: list):
     """Parses command line arguments.
@@ -72,7 +74,7 @@ def load_llm(llm_type):
         llm = ChatOpenAI(
             temperature=0.5,
             model="gpt-4",
-            openai_api_key="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",
+            openai_api_key=openai.api_key,
         )
     elif llm_type == "GPT4All":
         llm = GPT4All(
@@ -110,6 +112,7 @@ def search_knowledge_base(query):
     )
 
     docs = vectordb.similarity_search(query)
+    
 
     return docs
 
