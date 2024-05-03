@@ -41,8 +41,9 @@ vectordb = Chroma(
 )
 
 
-retriever = vectordb.as_retriever(search_kwragssearch_kwargs={"k": 3})
-#retriever = vectordb.similarity_search(query)
+retriever = vectordb.as_retriever(search_kwragssearch_kwargs={"k": 10})
+# retriever = vectordb.similarity_search(query)
+# search_kwragssearch_kwargs={"k": 3}
 
     
 
@@ -68,58 +69,62 @@ print(chain.invoke(
 
 ####
 
-# eval_questions = [
-#     "What is pacman?",
-# ]
+model = ChatOpenAI(openai_api_key=openai.api_key)
 
-# eval_answers = [
-#     " Pacman is the package manager used in Arch Linux. It is designed to easily manage packages, whether they are from official repositories or user-built packages. Pacman keeps the system up-to-date by synchronizing package lists with the master server and allows users to download/install packages with a simple command, handling dependencies automatically.",  # Incorrect Answer
-# ]
+eval_questions = [
+    "What is Pacman?",
+]
 
-# examples = zip(eval_questions, eval_answers)
+eval_answers = [
+    "Pacman is the package manager used in Arch Linux. It is designed to easily manage packages, whether they are from official repositories or user-built packages. Pacman keeps the system up-to-date by synchronizing package lists with the master server and allows users to download/install packages with a simple command, handling dependencies automatically.",
+]
 
-# client = Client()
-# dataset_name = "archat_eval_dataset"
+examples = zip(eval_questions, eval_answers)
 
-# try:
-#     dataset = client.read_dataset(dataset_name=dataset_name)
-#     print("using existing dataset: ", dataset.name)
-# except LangSmithError:
-#     dataset = client.create_dataset(
-#         dataset_name=dataset_name,
-#         description="sample evaluation dataset",
-#     )
-#     for question, answer in examples:
-#         client.create_example(
-#             inputs={"input": question},
-#             outputs={"answer": answer},
-#             dataset_id=dataset.id,
-#         )
+client = Client()
+dataset_name = "archat_eval_dataset-1"
 
-#     print("Created a new dataset: ", dataset.name)
+try:
+    dataset = client.read_dataset(dataset_name=dataset_name)
+    print("using existing dataset: ", dataset.name)
+except LangSmithError:
+    dataset = client.create_dataset(
+        dataset_name=dataset_name,
+        description="sample evaluation dataset",
+    )
+    for question, answer in examples:
+        client.create_example(
+            inputs={"input": question},
+            outputs={"answer": answer},
+            dataset_id=dataset.id,
+        )
+
+    print("Created a new dataset: ", dataset.name)
     
-# def create_qa_chain(llm, vectordb, return_context=True):
-#     qa_chain = RetrievalQA.from_chain_type(
-#         llm,
-#         retriever=vectordb.as_retriever(),
-#         return_source_documents=return_context,
-#     )
-#     return qa_chain
+def create_qa_chain(llm, vectordb, return_context=True):
+    qa_chain = RetrievalQA.from_chain_type(
+        llm,
+        retriever=vectordb.as_retriever(),
+        return_source_documents=return_context,
+    )
+    return qa_chain
 
-# evaluation_config = RunEvalConfig(
-#     evaluators=[
-#         "qa",
-#         "context_qa",
-#         "cot_qa",
-#     ],
-#     prediction_key="result",
-# )
+# Evaluation configuration
+evaluation_config = RunEvalConfig(
+    evaluators=[
+        "qa",
+        "context_qa",
+        "cot_qa",
+    ],
+    prediction_key="result",
+)
 
-# client = Client()
-# run_on_dataset(
-#     dataset_name=dataset_name,
-#     llm_or_chain_factory=create_qa_chain(llm=model, vectordb=vectordb),
-#     client=client,
-#     evaluation=evaluation_config,
-#     verbose=True,
-# )
+#client = Client()
+run_on_dataset(
+    dataset_name=dataset_name,
+    llm_or_chain_factory=create_qa_chain(llm=model, vectordb=vectordb),
+    client=client,
+    project_name="Archat-RAG-GPT-4",
+    evaluation=evaluation_config,
+    verbose=True,
+)

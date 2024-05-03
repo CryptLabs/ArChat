@@ -185,7 +185,7 @@ if __name__ == "__main__":
 
 retriever = vectordb.as_retriever()
 
+# Test code
 docs = retriever.get_relevant_documents("how to setup LUKS2?")
-
 print(docs)
 
