@@ -2,7 +2,7 @@
 data_dir: ./data
 # Huggingface
 embeddings_model: sentence-transformers/all-mpnet-base-v2
-introduction: Hello! I'm ArchI, how may I assist you today?
+introduction: Hello! I'm ArChat, how may I assist you today?
 # Sources
 Arch_Linux_Data_Sources:
    - archwiki
