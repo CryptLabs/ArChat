@@ -16,7 +16,9 @@ chain = prompt | llm | output_parser.StrOutputParser()
 # Define the evaluators to apply
 eval_config = smith.RunEvalConfig(
     evaluators=[
-        "cot_qa"
+        "qa",
+        "context_qa",
+        "cot_qa",
     ],
     custom_evaluators=[],
     eval_llm=chat_models.ChatOpenAI(model="gpt-4", temperature=0)
@@ -24,10 +26,10 @@ eval_config = smith.RunEvalConfig(
 
 client = langsmith.Client()
 chain_results = client.run_on_dataset(
-    dataset_name="archat_eval_dataset-1",
+    dataset_name="ArChat_eval_dataset-5",
     llm_or_chain_factory=chain,
     evaluation=eval_config,
-    project_name="Archat-NoRag-GPT-4",
+    #project_name="GPT-4",
     concurrency_level=5,
     verbose=True,
 )

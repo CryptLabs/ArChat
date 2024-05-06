@@ -19,15 +19,15 @@ from textual.reactive import Reactive
 from textual.containers import Horizontal, VerticalScroll
 from textual import events
 from pyfiglet import Figlet
-import archi
+import archat
 import sys
 
 
 # About screen
 f = Figlet(font="slant")
-BANNER = f.renderText("ArchI")
+BANNER = f.renderText("ArChat")
 ABOUT_TEXT = (
-    f.renderText("ArchI")
+    f.renderText("ArChat")
     + """
 Arch Linux can be challenging for new users due to its minimalistic and do-it-yourself approach. The installation process requires manual configuration and a good understanding of Linux systems. Additionally, troubleshooting and finding relevant information from the official ArchWiki documentation can be time-consuming for both new users and experienced administrators.
 ArchI aims to simplify the Arch Linux experience by providing a terminal-friendly AI assistant. It leverages data from the official ArchWiki documentation to provide fast and easy support for new users, administrators, and programmers. With ArchI, users can quickly access information, troubleshoot issues, and find solutions without the need for a desktop environment or a browser.
@@ -44,7 +44,7 @@ class ABOUT(Screen):
         yield Static("Press Esc to continue", id="any-key")
 
 
-class ArchIApp(App):
+class ArChatApp(App):
 
     CSS_PATH = "grid_layout_auto.tcss"
 
@@ -84,7 +84,7 @@ class ArchIApp(App):
     
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
-        yield Static(BANNER+"\n  Hello, I'm ArchI! How may I assist you today?", id="answer_window",classes="box")
+        yield Static(BANNER+"\n  Hello!, How may I assist you today?", id="answer_window",classes="box")
         yield Input("Ask me anything ...", id="ask_input",classes="box")
         yield Button("Ask", id="ask_button", classes="box")
         yield Footer()
@@ -113,11 +113,11 @@ class ArchIApp(App):
     def ask(self, query):
         # yield Label("Ask:")
         llm_type = "ChatOpenAI"
-        llm = archi.load_llm(llm_type)
+        llm = archat.load_llm(llm_type)
 
         # query = "What is the the best editor for the terminal in Arch Linux?"
-        chat_prompt = archi.create_chat_prompt(query)
-        get_answer = archi.get_answer(llm, chat_prompt, query)
+        chat_prompt = archat.create_chat_prompt(query)
+        get_answer = archat.get_answer(llm, chat_prompt, query)
         return get_answer
 
     def on_button_pressed(self) -> None:
@@ -129,6 +129,6 @@ class ArchIApp(App):
 
 
 if __name__ == "__main__":
-    app = ArchIApp()
-    app.title = "ArchI"
+    app = ArChatApp()
+    app.title = "ArChat"
     app.run()

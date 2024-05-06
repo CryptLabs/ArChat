@@ -1,7 +1,7 @@
 from langchain.chat_models import ChatAnthropic
 from langchain_core.prompts.prompt import PromptTemplate
 from langsmith.evaluation import LangChainStringEvaluator
-import archi
+import archat
 
 _PROMPT_TEMPLATE = """You are an expert professor specialized in grading students' answers to questions.
 You are grading the following question:

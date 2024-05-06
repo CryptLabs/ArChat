@@ -24,7 +24,7 @@ from textual.css.query import NoMatches
 
 
 from pyfiglet import Figlet
-import archi
+import archat
 import sys
 
 
@@ -155,11 +155,11 @@ class ArchIApp(App):
     def ask(self, query):
         # yield Label("Ask:")
         llm_type = "GPT4All"
-        llm = archi.load_llm(llm_type)
+        llm = archat.load_llm(llm_type)
 
         # query = "What is the the best editor for the terminal in Arch Linux?"
-        chat_prompt = archi.create_chat_prompt(query)
-        get_answer = archi.get_answer(llm, chat_prompt, query)
+        chat_prompt = archat.create_chat_prompt(query)
+        get_answer = archat.get_answer(llm, chat_prompt, query)
         return get_answer
 
     def on_button_pressed(self) -> None:
