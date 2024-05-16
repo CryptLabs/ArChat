@@ -21,6 +21,7 @@ import openai
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
+
 def parse_args(config: dict, args: list):
     """Parses command line arguments.
 
@@ -112,7 +113,6 @@ def search_knowledge_base(query):
     )
 
     docs = vectordb.similarity_search(query)
-    
 
     return docs
 

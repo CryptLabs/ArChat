@@ -26,7 +26,7 @@ eval_config = smith.RunEvalConfig(
 
 client = langsmith.Client()
 chain_results = client.run_on_dataset(
-    dataset_name="ArChat_eval_dataset-5",
+    dataset_name="ArChat_eval_dataset-2",
     llm_or_chain_factory=chain,
     evaluation=eval_config,
     #project_name="GPT-4",
