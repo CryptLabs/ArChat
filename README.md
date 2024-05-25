@@ -8,7 +8,7 @@
   <h3 align="center">ArChat</h3>
 
   <p align="center">
-    Arch + AI = ArChat<br/><br/> Your Terminal Friendly Arch Linux AI Assistant!<br/>
+    <br/><br/> Your Terminal Friendly Arch Linux AI Chat Assistant!<br/>
     <br/>s
     <br/>
     <br/>
