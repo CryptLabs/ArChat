@@ -9,7 +9,7 @@
 
   <p align="center">
     <br/><br/> Your Terminal Friendly Arch Linux AI Chat Assistant!<br/>
-    <br/>s
+    <br/>
     <br/>
     <br/>
     <br/>
