@@ -36,7 +36,7 @@
 ## About The Project
 Arch Linux can be challenging for new users due to its minimalistic and do-it-yourself approach. The installation process requires manual configuration and a good understanding of Linux systems. Additionally, troubleshooting and finding relevant information from the official ArchWiki documentation can be time-consuming for both new users and experienced administrators.
 
-ArChat aims to simplify the Arch Linux experience by providing a terminal-friendly AI assistant. It leverages data from the official ArchWiki documentation to provide fast and easy support for new users, administrators, and programmers. With ArChat, users can quickly access information, troubleshoot issues, and find solutions without the need for a desktop environment or a browser.
+ArChat aims to simplify the Arch Linux experience by providing a terminal-friendly AI Chat Assistant. It leverages data from the official ArchWiki documentation to provide fast and easy support for new users, administrators, and programmers. With ArChat, users can quickly access information, troubleshoot issues, and find solutions without the need for a desktop environment or a browser.
 
 The key benefits of ArChat include:
 - Terminal-friendly: ArChat runs directly on the terminal, making it accessible even without a graphical user interface.
