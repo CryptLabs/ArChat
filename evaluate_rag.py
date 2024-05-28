@@ -21,8 +21,8 @@ from langsmith import Client
 from langsmith.utils import LangSmithError
 from langchain.chains import RetrievalQA
 
-import openai  
-   
+import openai
+
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 LANGCHAIN_TRACING_V2 = os.getenv("LANGCHAIN_TRACING_V2")
@@ -45,7 +45,6 @@ retriever = vectordb.as_retriever(search_kwragssearch_kwargs={"k": 10})
 # retriever = vectordb.similarity_search(query)
 # search_kwragssearch_kwargs={"k": 3}
 
-    
 
 prompt_template = """
 Answer the question based only on the supplied context. If you don't know the answer, say you don't know the answer.
@@ -63,11 +62,9 @@ chain = (
     | StrOutputParser()
 )
 
-print(chain.invoke(
-    "In the given context, what is pacman?"
-))
+print(chain.invoke("In the given context, what is pacman?"))
 
-####
+# Our evaluation dataset
 
 model = ChatOpenAI(openai_api_key=openai.api_key)
 
@@ -81,8 +78,7 @@ eval_questions = [
     "Is Arch Linux a stable distribution? Will I get frequent breakage?",
     "I am a complete GNU/Linux beginner. Should I use Arch?",
     "Where can I find the Arch Linux Repositories?",
-    "What is the Arch User Repository?"
-    
+    "What is the Arch User Repository?",
 ]
 
 eval_answers = [
@@ -95,7 +91,7 @@ eval_answers = [
     "It is the user who is ultimately responsible for the stability of their own rolling release system. The user decides when to upgrade, and merges necessary changes when required. If the user reaches out to the community, help is often provided in a timely manner. The difference between Arch and other distributions in this regard is that Arch is truly a 'do-it-yourself' distribution; complaints of breakage are misguided and unproductive, since upstream changes are not the responsibility of Arch devs. See the System maintenance article for tips on how to make an Arch Linux system as stable as possible.",
     "If you are a beginner and want to use Arch, you must be willing to invest time into learning a new system, and accept that Arch is designed as a 'do-it-yourself' distribution; it is the user who assembles the system. Before asking for help, do your own independent research by searching the Web, the forum and the superb documentation provided by the Arch Wiki. There is a reason these resources were made available to you in the first place. Many thousands of volunteered hours have been spent compiling this excellent information. See also Arch terminology#RTFM and the Installation guide.",
     "The Arch Linux Repositories can be found in the /repos directory of the Arch Linux Archive. The repositories contain daily snapshots of the official mirror organized by date.",
-    "While the Arch Build System allows the ability of building software available in the official repositories, the Arch User Repository (AUR) is the equivalent for user submitted packages. It is an unsupported repository of build scripts accessible through the web interface or through the Aurweb RPC interface."
+    "While the Arch Build System allows the ability of building software available in the official repositories, the Arch User Repository (AUR) is the equivalent for user submitted packages. It is an unsupported repository of build scripts accessible through the web interface or through the Aurweb RPC interface.",
 ]
 
 examples = zip(eval_questions, eval_answers)
@@ -119,7 +115,8 @@ except LangSmithError:
         )
 
     print("Created a new dataset: ", dataset.name)
-    
+
+
 def create_qa_chain(llm, vectordb, return_context=True):
     qa_chain = RetrievalQA.from_chain_type(
         llm,
@@ -127,6 +124,7 @@ def create_qa_chain(llm, vectordb, return_context=True):
         return_source_documents=return_context,
     )
     return qa_chain
+
 
 # Evaluation configuration
 evaluation_config = RunEvalConfig(
@@ -138,12 +136,12 @@ evaluation_config = RunEvalConfig(
     prediction_key="result",
 )
 
-#client = Client()
+# client = Client()
 run_on_dataset(
     dataset_name=dataset_name,
     llm_or_chain_factory=create_qa_chain(llm=model, vectordb=vectordb),
     client=client,
-   # project_name="ArChat-RAG-GPT-4",
+    # project_name="ArChat-RAG-GPT-4",
     evaluation=evaluation_config,
     verbose=True,
 )

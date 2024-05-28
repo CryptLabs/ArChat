@@ -1,5 +1,5 @@
 """
-An example how to use the Terminal widget with bash and htop
+Implementation of a ArChat that demonstrates the use of the `Terminal` widget.
 """
 
 from __future__ import annotations

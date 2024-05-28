@@ -48,18 +48,15 @@ class ArChatApp(App):
 
     CSS_PATH = "grid_layout_auto.tcss"
 
-    #CSS_PATH = "display.tcss"
+    # CSS_PATH = "display.tcss"
     SCREENS = {"about": ABOUT()}
     BINDINGS = [
-        #("d", "toggle_dark", "Toggle dark mode"),
+        # ("d", "toggle_dark", "Toggle dark mode"),
         # ("g", "toggle_green", "Toggle green mode"),
         ("b", "push_screen('about')", "About"),
         ("s", "search", "Search Packages"),
         ("g", "g", "Get Packages"),
         ("r", "r", "Remove Packages"),
-
-        
-
         ("q", "quit", "Quit"),
     ]
     COLORS = [
@@ -81,16 +78,17 @@ class ArChatApp(App):
     #     yield Footer()
     #     yield Input("Ask me anything", id="ask_input")
     #     yield Horizontal(Button("Ask", id="ask_button"))
-    
+
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
-        yield Static(BANNER+"\n  Hello!, How may I assist you today?", id="answer_window",classes="box")
-        yield Input("Ask me anything ...", id="ask_input",classes="box")
+        yield Static(
+            BANNER + "\n  Hello!, How may I assist you today?",
+            id="answer_window",
+            classes="box",
+        )
+        yield Input("Ask me anything ...", id="ask_input", classes="box")
         yield Button("Ask", id="ask_button", classes="box")
         yield Footer()
-
-      
-
 
     def action_quit(self) -> None:
         sys.exit(0)

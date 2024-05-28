@@ -1,5 +1,6 @@
 # Description: This script loads the Arch Linux Wiki dump and splits the text into chunks
 import os
+
 print(os.getcwd())
 
 import sys
@@ -36,9 +37,12 @@ def parse_args(config: dict, args: list):
     if args.test_embed:
         config["mediawikis"] = ["archwiki"]
         config["data_dir"] = "./test_data"
-        config["question"] = "What is the the best editor for the terminal in Arch Linux?"
+        config["question"] = (
+            "What is the the best editor for the terminal in Arch Linux?"
+        )
 
     return config
+
 
 def load_config():
     """Loads configuration from config.yaml file.
@@ -79,7 +83,9 @@ def rename_duplicates(documents: [Document]):
 
     return documents
 
+
 ############################################################################################################
+
 
 def load_document(wiki: tuple):
     """Loads an xml file of mediawiki pages into document format.
@@ -108,7 +114,9 @@ def load_document(wiki: tuple):
         for doc in rename_duplicates(loader.load())
     ]
 
+
 ############################################################################################################
+
 
 class CustomTextSplitter(RecursiveCharacterTextSplitter):
     """Creates a custom Character Text Splitter.
@@ -121,7 +129,9 @@ class CustomTextSplitter(RecursiveCharacterTextSplitter):
         separators = [r"\w(=){3}\n", r"\w(=){2}\n", r"\n\n", r"\n", r"\s"]
         super().__init__(separators=separators, keep_separator=False, **kwargs)
 
-############################################################################################################ 
+
+############################################################################################################
+
 
 def load_documents(config: dict):
     """Load all the documents in the MediaWiki wiki page using multithreading.
@@ -161,6 +171,7 @@ def load_documents(config: dict):
 
     return documents
 
+
 ############################################################################################################
 
 if __name__ == "__main__":
@@ -188,4 +199,3 @@ retriever = vectordb.as_retriever()
 # Test code
 docs = retriever.get_relevant_documents("how to setup LUKS2?")
 print(docs)
-

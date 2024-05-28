@@ -21,8 +21,6 @@ from textual import events
 from textual import log
 from textual_terminal import Terminal
 from textual.css.query import NoMatches
-
-
 from pyfiglet import Figlet
 import archat
 import sys

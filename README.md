@@ -19,26 +19,28 @@
   </p>
 </p>
 
- ![Contributors](https://img.shields.io/github/contributors/CryptLabs/ArChat?color=dark-green) ![Issues](https://img.shields.io/github/issues/CryptLabs/ArChat) ![License](https://img.shields.io/github/license/CryptLabs/ArChat) 
+![Contributors](https://img.shields.io/github/contributors/CryptLabs/ArChat?color=dark-green) ![Issues](https://img.shields.io/github/issues/CryptLabs/ArChat) ![License](https://img.shields.io/github/license/CryptLabs/ArChat)
 
 ## Table Of Contents
 
-* [About the Project](#about-the-project)
-* [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [Authors](#authors)
+- [About the Project](#about-the-project)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Authors](#authors)
 
 ## About The Project
+
 Arch Linux can be challenging for new users due to its minimalistic and do-it-yourself approach. The installation process requires manual configuration and a good understanding of Linux systems. Additionally, troubleshooting and finding relevant information from the official ArchWiki documentation can be time-consuming for both new users and experienced administrators.
 
 ArChat aims to simplify the Arch Linux experience by providing a terminal-friendly AI Chat Assistant. It leverages data from the official ArchWiki documentation to provide fast and easy support for new users, administrators, and programmers. With ArChat, users can quickly access information, troubleshoot issues, and find solutions without the need for a desktop environment or a browser.
 
 The key benefits of ArChat include:
+
 - Terminal-friendly: ArChat runs directly on the terminal, making it accessible even without a graphical user interface.
 - Remote access: ArChat can be accessed remotely over SSH, allowing users to get support from anywhere.
 - Offline capability: ArChat can be used locally without an internet connection, ensuring uninterrupted access to documentation and support.
@@ -53,10 +55,9 @@ More features will be added in future updates to further enhance the user experi
 
 ## Built With
 
-* Python
-* Langchain
-* Chroma
-
+- Python
+- Langchain
+- Chroma
 
 ## Getting Started
 
@@ -64,10 +65,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-`install
+` install
 
 ### Installation
-
 
 ## Usage
 
@@ -80,10 +80,11 @@ See the [open issues](https://github.com/CryptLabs/ArChat/issues) for a list of 
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/CryptLabs/ArChat/issues/new) to discuss it, or directly create a pull request after you edit the *README.md* file with necessary changes.
-* Please make sure you check your spelling and grammar.
-* Create individual PR for each suggestion.
-* Please also read through the [Code Of Conduct](https://github.com/CryptLabs/ArChat/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
+
+- If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/CryptLabs/ArChat/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
+- Please make sure you check your spelling and grammar.
+- Create individual PR for each suggestion.
+- Please also read through the [Code Of Conduct](https://github.com/CryptLabs/ArChat/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
 ### Creating A Pull Request
 
@@ -95,4 +96,4 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Author
 
-* **Ali A. Reihani** - [CryptLabs](https://cryptlabs.com)
+- **Ali A. Reihani** - [CryptLabs](https://cryptlabs.com)
