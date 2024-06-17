@@ -75,17 +75,17 @@ Set your OpenAI API Key in your environment:
 
 1. Run the following command in your terminal, replacing yourkey with your [API key](https://beta.openai.com/account/api-keys).
 
-echo "export OPENAI_API_KEY='yourkey'" >> ~/.zshrc
+`echo "export OPENAI_API_KEY='yourkey'" >> ~/.zshrc`
 
-echo "export OPENAI_ORGANIZATION_ID='CL'" >> ~/.zshrc
+`echo "export OPENAI_ORGANIZATION_ID='CL'" >> ~/.zshrc`
 
 2. Update the shell with the new variable:
 
-source ~/.zshrc
+`source ~/.zshrc`
 
 3. Confirm that you have set your environment variable using the following command.
 
-echo $OPENAI_API_KEY
+`echo $OPENAI_API_KEY`
 
 The value of your API key will be the resulting output.
 
@@ -94,11 +94,12 @@ The value of your API key will be the resulting output.
 Follow the directions in Option 1, replacing **.zshrc** with **.bash_profile.**
 
 You’re all set! You can now reference the key in curl or load it in your Python:
-
+``
 import os  
 import openai  
    
 openai.api_key = os.environ["OPENAI_API_KEY"]
+``
 
 ### Installation
 
