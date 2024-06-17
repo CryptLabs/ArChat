@@ -65,7 +65,8 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-` install
+To install the dependencies from the requirements.txt file, you can use the pip install -r command.
+`pip install -r requirements.txt`
 
 ### Installation
 
