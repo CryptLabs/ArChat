@@ -69,6 +69,37 @@ To install the dependencies from the requirements.txt file, you can use the pip 
 
 `pip install -r requirements.txt`
 
+Set your OpenAI API Key in your environment:
+
+**Option 1:** Set your ‘OPENAI_API_KEY’ Environment Variable using zsh
+
+1. Run the following command in your terminal, replacing yourkey with your [API key](https://beta.openai.com/account/api-keys).
+
+echo "export OPENAI_API_KEY='yourkey'" >> ~/.zshrc
+
+echo "export OPENAI_ORGANIZATION_ID='CL'" >> ~/.zshrc
+
+2. Update the shell with the new variable:
+
+source ~/.zshrc
+
+3. Confirm that you have set your environment variable using the following command.
+
+echo $OPENAI_API_KEY
+
+The value of your API key will be the resulting output.
+
+**Option 2:** Set your ‘OPENAI_API_KEY’ Environment Variable using bash
+
+Follow the directions in Option 1, replacing **.zshrc** with **.bash_profile.**
+
+You’re all set! You can now reference the key in curl or load it in your Python:
+
+import os  
+import openai  
+   
+openai.api_key = os.environ["OPENAI_API_KEY"]
+
 ### Installation
 
 ## Usage
