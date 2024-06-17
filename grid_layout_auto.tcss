@@ -22,8 +22,8 @@ Header {
     column-span: 3;
     row-span: 2;
     height: 100%;
-    background: blue;
-    color: white;
+    background:  #000000;
+    color: yellow;
     border:white;
   }
 
