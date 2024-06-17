@@ -55,7 +55,7 @@ More features will be added in future updates to further enhance the user experi
 
 ## Built With
 
-- Python
+- Python 3.12
 - The LangChain Framework
 - ChromaDB
 
@@ -100,6 +100,31 @@ import openai
    
 openai.api_key = os.environ["OPENAI_API_KEY"]
 ```
+
+
+The instructions for preparing the ArchWiki documentation dataset for ingestion:
+
+1. **Setup**:
+   Ensure you have the wikiteam3 Tool installed. This is for downloading and preserving MediaWiki based Wikis.
+
+2. **Installation**:
+   If you don't have the wikiteam3 Tool, install it using the following command:
+   ```
+   pip install wikiteam3 --upgrade
+   ```
+
+3. **Data Dump**:
+   Use the following command to dump the data from the ArchWiki documentation:
+   ```
+   wikiteam3dumpgenerator https://wiki.archlinux.org --xml --curonly --namespaces 0
+   ```
+
+4. **Check Data Location**:
+   Verify that the downloaded data is located in the /data folder in the ArChat project.
+
+5. **Run Ingest.py**:
+   Execute ingest.py to create the vector embeddings and store them in ChromaDB. 
+
 
 ### Installation
 
