@@ -94,12 +94,12 @@ The value of your API key will be the resulting output.
 Follow the directions in Option 1, replacing **.zshrc** with **.bash_profile.**
 
 You’re all set! You can now reference the key in curl or load it in your Python:
-``
+```
 import os  
 import openai  
    
 openai.api_key = os.environ["OPENAI_API_KEY"]
-``
+```
 
 ### Installation
 
