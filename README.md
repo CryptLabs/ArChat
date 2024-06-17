@@ -56,8 +56,8 @@ More features will be added in future updates to further enhance the user experi
 ## Built With
 
 - Python
-- Langchain
-- Chroma
+- The LangChain Framework
+- ChromaDB
 
 ## Getting Started
 
