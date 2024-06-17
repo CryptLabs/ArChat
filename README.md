@@ -99,3 +99,9 @@ Contributions are what make the open source community such an amazing place to b
 ## Author
 
 - **Ali A. Reihani** - [CryptLabs](https://cryptlabs.com)
+
+## Paper
+
+"The Role of Artificial Intelligence in Utilising Open-Source Information for Enhancing User Experience in Linux Distributions: A Case Study of Arch Linux"
+
+This project was the result of this study at the University of York, United Kingdom.
