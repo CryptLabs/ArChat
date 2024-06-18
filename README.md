@@ -105,10 +105,10 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 The instructions for preparing the ArchWiki documentation dataset for ingestion:
 
 1. **Setup**:
-   Ensure you have the wikiteam3 Tool installed. This is for downloading and preserving MediaWiki based Wikis.
+   Ensure you have the wikiteam3 tool installed. This is for downloading and preserving MediaWiki based Wikis.
 
 2. **Installation**:
-   If you don't have the wikiteam3 Tool, install it using the following command:
+   If you don't have the wikiteam3 tool, install it using the following command:
    ```
    pip install wikiteam3 --upgrade
    ```
@@ -143,7 +143,6 @@ Contributions are what make the open source community such an amazing place to b
 - If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/CryptLabs/ArChat/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
 - Please make sure you check your spelling and grammar.
 - Create individual PR for each suggestion.
-- Please also read through the [Code Of Conduct](https://github.com/CryptLabs/ArChat/blob/main/CODE_OF_CONDUCT.md) before posting your first idea as well.
 
 ### Creating A Pull Request
 
