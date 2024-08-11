@@ -45,7 +45,6 @@ class ABOUT(Screen):
 
 
 class ArChatApp(App):
-
     CSS_PATH = "grid_layout_auto.tcss"
 
     # CSS_PATH = "display.tcss"
@@ -130,3 +129,5 @@ if __name__ == "__main__":
     app = ArChatApp()
     app.title = "ArChat"
     app.run()
+
+    ##
