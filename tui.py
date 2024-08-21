@@ -23,7 +23,7 @@ import archat
 import sys
 
 
-# About screenq
+# About screen
 f = Figlet(font="big")
 BANNER = f.renderText("ArChat")
 ABOUT_TEXT = (
