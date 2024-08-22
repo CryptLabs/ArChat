@@ -1,23 +1,14 @@
 import sys
-from typing import Coroutine
 
 from pyfiglet import Figlet
 from textual import events
 from textual.app import App, ComposeResult
-from textual.containers import Horizontal, VerticalScroll
-from textual.reactive import Reactive
 from textual.screen import Screen
-from textual.widget import Widget
 from textual.widgets import (
     Button,
     Footer,
     Header,
     Input,
-    Label,
-    LoadingIndicator,
-    Placeholder,
-    Pretty,
-    RichLog,
     Static,
 )
 
