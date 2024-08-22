@@ -80,7 +80,7 @@ class ArChatApp(App):
         yield Button("Ask", id="ask_button", classes="box")
         yield Footer()
 
-    def action_quit(self) -> None:
+    async def action_quit(self) -> None:
         sys.exit(0)
 
     def action_toggle_dark(self) -> None:
