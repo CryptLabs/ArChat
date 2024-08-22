@@ -1,27 +1,27 @@
+import sys
 from typing import Coroutine
+
+from pyfiglet import Figlet
+from textual import events
 from textual.app import App, ComposeResult
+from textual.containers import Horizontal, VerticalScroll
+from textual.reactive import Reactive
+from textual.screen import Screen
 from textual.widget import Widget
 from textual.widgets import (
-    Pretty,
-    Header,
-    Footer,
-    Static,
     Button,
+    Footer,
+    Header,
     Input,
     Label,
-    RichLog,
-    Placeholder,
     LoadingIndicator,
+    Placeholder,
+    Pretty,
+    RichLog,
+    Static,
 )
-from textual import events
-from textual.screen import Screen
-from textual.reactive import Reactive
-from textual.containers import Horizontal, VerticalScroll
-from textual import events
-from pyfiglet import Figlet
-import archat
-import sys
 
+import archat
 
 # About screen
 f = Figlet(font="big")
